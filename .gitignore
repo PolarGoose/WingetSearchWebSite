@@ -1,0 +1,6 @@
+/build/
+node_modules/
+/src/WebSite/public/WingetPackages.sqlite3
+winget-packages-flexsearch-db-index.json
+.idea/
+.vs/
