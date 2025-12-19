@@ -1,0 +1,5 @@
+/build/
+node_modules/
+WingetPackages.sqlite3
+.idea/
+.vs/

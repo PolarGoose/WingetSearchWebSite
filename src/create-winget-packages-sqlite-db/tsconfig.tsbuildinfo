@@ -1,0 +1,1 @@
+{"root":["./src/create-winget-sqlite-db.ts","./src/git-executable.ts","./src/index.ts","./src/winget-git-repo.ts","./src/shared/winget-package.ts"],"version":"5.9.3"}
