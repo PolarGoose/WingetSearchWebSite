@@ -21,7 +21,7 @@ export function search(query: string, limit?: number): WingetPackage[] {
   const uniquePackages = new Map<Id, WingetPackage>();
   for (const fieldRes of enriched) {
     for (const hit of fieldRes.result) {
-      uniquePackages.set(hit.id, hit.doc!.data as WingetPackage);
+      uniquePackages.set(hit.id, hit.doc!.data);
     }
   }
 

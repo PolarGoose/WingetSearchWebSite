@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import fg from 'fast-glob';
 import YAML from 'yaml';
 import type { WingetPackage } from './shared/winget-package.ts';
+import type { MainManifest, LocaleManifest, InstallerManifest } from './winget-manifest-types.ts';
 
 export async function getWingetPackages(wingetGitRepositoryFolderPath: string): Promise<WingetPackage[]> {
   const manifestsPath = path.join(wingetGitRepositoryFolderPath, 'manifests');
@@ -11,9 +12,9 @@ export async function getWingetPackages(wingetGitRepositoryFolderPath: string): 
   const packages: WingetPackage[] = [];
 
   for (const prefix of prefixes) {
-    const mainManifest = await deserializeYaml(`${prefix}.yaml`);
-    const defaultLocaleManifest = await deserializeYaml(`${prefix}.locale.${mainManifest.DefaultLocale}.yaml`);
-    const installerManifest = await deserializeYaml(`${prefix}.installer.yaml`);
+    const mainManifest = await deserializeYaml<MainManifest>(`${prefix}.yaml`);
+    const defaultLocaleManifest = await deserializeYaml<LocaleManifest>(`${prefix}.locale.${mainManifest.DefaultLocale}.yaml`);
+    const installerManifest = await deserializeYaml<InstallerManifest>(`${prefix}.installer.yaml`);
 
     packages.push({
       PackageIdentifier: mainManifest.PackageIdentifier,
@@ -23,7 +24,7 @@ export async function getWingetPackages(wingetGitRepositoryFolderPath: string): 
       Description: defaultLocaleManifest.Description,
       Tags: uniqueStrings(defaultLocaleManifest.Tags),
       PackageUrl: defaultLocaleManifest.PackageUrl,
-      SupportedArchitecture: uniqueStrings(installerManifest.Installers.map((ins: any) => ins.Architecture)),
+      SupportedArchitecture: uniqueStrings(installerManifest.Installers.map((ins) => ins.Architecture)),
     });
   }
 
@@ -57,9 +58,9 @@ async function getLatestVersionManifestPrefixes(manifestsPath: string): Promise<
   return Array.from(latestByPackageId.values(), (v) => v.prefix);
 }
 
-async function deserializeYaml(yamlFilePath: string): Promise<any> {
+async function deserializeYaml<T>(yamlFilePath: string): Promise<T> {
   const text = await fs.readFile(yamlFilePath, 'utf8');
-  return YAML.parse(text);
+  return YAML.parse(text) as T;
 }
 
 function naturalVersionCompare(a: string, b: string): number {
@@ -71,6 +72,6 @@ function naturalVersionCompare(a: string, b: string): number {
   return collator.compare(a, b);
 }
 
-function uniqueStrings(arr: readonly string[] | null): string[] {
+function uniqueStrings(arr: readonly string[] | null | undefined): string[] {
   return arr ? Array.from(new Set(arr.filter(Boolean))) : [];
 }
