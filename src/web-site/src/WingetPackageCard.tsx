@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Card, CardContent, Stack, Typography, TextField, Box, Link, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { ChipsRow } from './chips-row.tsx';
+import { ChipsRow } from './ChipsRow.tsx';
 import type { WingetPackage } from '../../create-winget-packages-sqlite-db/src/shared/winget-package.ts';
 
 type WingetPackageCardProps = { pkg: WingetPackage };

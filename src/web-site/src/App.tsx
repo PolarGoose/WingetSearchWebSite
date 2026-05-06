@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { search, wingetPackagesSqliteDbCreationDate } from './winget-packages-db.ts';
-import { WingetPackagesSearchResultsList } from './winget-packages-search-results-list.tsx';
+import { WingetPackagesSearchResultsList } from './WingetPackagesSearchResultsList.tsx';
 import { Box, Container, Link, Stack, Typography } from '@mui/material';
-import { WingetSearchBar } from './winget-search-bar.tsx';
+import { WingetSearchBar } from './WingetSearchBar.tsx';
 import type { WingetPackage } from '../../create-winget-packages-sqlite-db/src/shared/winget-package.ts';
 
 export default function App() {
@@ -21,8 +21,10 @@ export default function App() {
           <Typography variant="h6">Github</Typography>
         </Link>
       </Box>
-      <Stack spacing={2} alignItems="center">
-        <Typography variant="h4">Winget search</Typography>
+      <Stack spacing={2} sx={{ alignItems: 'center' }}>
+        <Typography variant="h4" component="h1" sx={{ mt: 3, mb: 2 }}>
+          Winget search
+        </Typography>
 
         <WingetSearchBar onSearch={handleSearch} />
 

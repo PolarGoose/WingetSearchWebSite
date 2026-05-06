@@ -20,6 +20,9 @@ export default defineConfig([
       },
     },
     rules: {
+      '@typescript-eslint/only-throw-error': 'off',
+      'preserve-caught-error': 'off',
+      'react-hooks/set-state-in-effect': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',

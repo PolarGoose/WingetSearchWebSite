@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { WingetPackageCard } from './winget-package-card.tsx';
+import { WingetPackageCard } from './WingetPackageCard.tsx';
 import type { WingetPackage } from '../../create-winget-packages-sqlite-db/src/shared/winget-package.ts';
 
 type WingetPackagesSearchResultsListProps = { packages: WingetPackage[] };

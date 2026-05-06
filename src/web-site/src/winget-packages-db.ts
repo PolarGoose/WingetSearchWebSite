@@ -42,7 +42,7 @@ export function search(query: string, limit?: number): WingetPackage[] {
     sql: `SELECT Data
           FROM WingetPackages
           WHERE WingetPackages MATCH $matchQuery
-          ORDER BY PackageIdentifier
+          ORDER BY rank
           ${useLimit ? 'LIMIT $limit' : ''};`,
     bind: {
       $matchQuery: matchQuery,
