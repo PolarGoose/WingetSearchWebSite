@@ -62,7 +62,7 @@ async function deserializeYaml(yamlFilePath: string): Promise<any> {
   const text = (await fs.readFile(yamlFilePath, 'utf8')).replace(/\r\n?/g, '\n');
 
   try {
-    return YAML.parse(text);
+    return YAML.parse(text, { uniqueKeys: false });
   } catch (err) {
     throw new Error(`Failed to parse YAML file: ${yamlFilePath}\n${(err as Error).message}`);
   }

@@ -19,7 +19,6 @@ $ErrorActionPreference = "Stop"
 $ProgressPreference = "SilentlyContinue"
 
 $root = Resolve-Path $PSScriptRoot
-$buildDir = "$root/build"
 
 Info "Install dependencies"
 npm install --prefix $root/src

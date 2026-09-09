@@ -3,3 +3,4 @@ node_modules/
 WingetPackages.sqlite3
 .idea/
 .vs/
+tsconfig.tsbuildinfo

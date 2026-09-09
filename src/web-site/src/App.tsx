@@ -1,18 +1,13 @@
-import * as React from 'react';
 import { search, wingetPackagesSqliteDbCreationDate } from './winget-packages-db.ts';
 import { WingetPackagesSearchResultsList } from './WingetPackagesSearchResultsList.tsx';
 import { Box, Container, Link, Stack, Typography } from '@mui/material';
 import { WingetSearchBar } from './WingetSearchBar.tsx';
-import type { WingetPackage } from '../../create-winget-packages-sqlite-db/src/shared/winget-package.ts';
+import dayjs from 'dayjs';
 
 export default function App() {
-  const [packages, setPackages] = React.useState<WingetPackage[]>([]);
-  const [hasSearched, setHasSearched] = React.useState(false);
-
-  const handleSearch = (query: string) => {
-    setPackages(search(query));
-    setHasSearched(true);
-  };
+  const query = (new URLSearchParams(window.location.search).get('q') ?? '').trim();
+  const hasSearched = query.length >= 3;
+  const packages = hasSearched ? search(query) : [];
 
   return (
     <Container maxWidth="md" sx={{ py: 3 }}>
@@ -26,10 +21,10 @@ export default function App() {
           Winget search
         </Typography>
 
-        <WingetSearchBar onSearch={handleSearch} />
+        <WingetSearchBar initialQuery={query} />
 
         <Typography variant="body2" color="text.secondary">
-          Database creation date: {wingetPackagesSqliteDbCreationDate.toLocaleString()}
+          Database creation date: {dayjs(wingetPackagesSqliteDbCreationDate).locale('en').format('D-MMM-YYYY HH:mm:ss').toUpperCase()}
         </Typography>
 
         {hasSearched && (
