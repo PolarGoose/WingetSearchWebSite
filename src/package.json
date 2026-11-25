@@ -9,28 +9,28 @@
     "db:debug": "node --inspect-brk create-winget-packages-sqlite-db/src/index.ts"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^9.4.0",
-    "@mui/material": "^9.4.0",
-    "@sqlite.org/sqlite-wasm": "^3.53.0-build1",
-    "better-sqlite3": "^13.0.3",
-    "dayjs": "^1.11.23",
-    "execa": "^10.0.1",
-    "fast-glob": "^3.3.3",
-    "prettier": "^3.9.6",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "yaml": "^2.9.0",
-    "zod": "^4.5.4"
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "@sqlite.org/sqlite-wasm": "latest",
+    "better-sqlite3": "latest",
+    "dayjs": "latest",
+    "execa": "latest",
+    "fast-glob": "latest",
+    "prettier": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "yaml": "latest",
+    "zod": "latest"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^9.6.0",
-    "@types/node": "^26.5.0",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.7",
-    "@vitejs/plugin-react": "^6.1.1",
-    "typescript": "~7.0.2",
-    "vite": "^8.2.2"
+    "@types/better-sqlite3": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "typescript": "latest",
+    "vite": "latest"
   }
 }
